@@ -17,7 +17,7 @@ public class UploadImage {
             byte[] imageByteArray = Base64.decodeBase64(encodedImageStr);
 
             //
-            FileOutputStream imageOutFile = new FileOutputStream("C:/picture/" + fileName+".jpg");
+            FileOutputStream imageOutFile = new FileOutputStream("C:/xampp/tomcat/webapps/pic/" + fileName+".jpg");
             imageOutFile.write(imageByteArray);
 
             imageOutFile.close();
