@@ -1,4 +1,5 @@
 <%@page import="Utils.UploadVoice"%>
+<%@ page import="Utils.UploadImage" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -6,14 +7,14 @@
 </head>
 <body>
 <%
-    String VoiceEncodedStr = request.getParameter("voice");
+    String imgEncodedStr = request.getParameter("voice");
     String fileName = request.getParameter("filename");
     System.out.println("Filename: "+ fileName);
-    if(VoiceEncodedStr != null){
-        UploadVoice.convertStringtoImage(VoiceEncodedStr, fileName);
-        out.print("Voice upload complete, Please check your directory");
+    if(imgEncodedStr != null){
+        UploadImage.convertStringtoImage(imgEncodedStr, fileName);
+        out.print("Image upload complete, Please check your directory");
     } else{
-        out.print("Voice is empty");
+        out.print("Image is empty");
     }
 %>
 </body>
