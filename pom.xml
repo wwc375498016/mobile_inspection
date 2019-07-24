@@ -32,11 +32,6 @@
     </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>commons-codec</groupId>
-      <artifactId>commons-codec</artifactId>
-      <version>1.11</version>
-    </dependency>
     <!-- End: json相关依赖包 -->
     <dependency>
       <groupId>net.sf.json-lib</groupId>
@@ -159,13 +154,13 @@
     <dependency>
       <groupId>commons-codec</groupId>
       <artifactId>commons-codec</artifactId>
-      <version>1.6</version>
-     </dependency>
+      <version>1.10</version>
+    </dependency>
 
   </dependencies>
 
   <build>
-    <finalName>ssm-demo</finalName>
+    <finalName>mobile_inspection_war</finalName>
     <plugins>
 
       <plugin>

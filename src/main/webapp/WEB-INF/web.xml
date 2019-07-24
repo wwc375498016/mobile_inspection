@@ -15,7 +15,7 @@
     <init-param>
       <param-name>DBPassword</param-name>
       <!-- 下面这两个标签中间写你的数据库密码，如果没设置就什么也别写，空格也不能有 -->
-      <param-value></param-value>
+      <param-value>z001210123</param-value>
     </init-param>
     <init-param>
       <param-name>ConnectionURL</param-name>
@@ -81,6 +81,11 @@
     <servlet-class>servlet.UserDetail</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>GetPic</servlet-name>
+    <servlet-class>servlet.GetPic</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>DBManager</servlet-name>
     <url-pattern>/DBManager</url-pattern>
@@ -139,6 +144,11 @@
   <servlet-mapping>
     <servlet-name>UserDetail</servlet-name>
     <url-pattern>/UserDetail</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>GetPic</servlet-name>
+    <url-pattern>/GetPic</url-pattern>
   </servlet-mapping>
 
   <session-config>
