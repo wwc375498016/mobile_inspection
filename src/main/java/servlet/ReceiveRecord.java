@@ -62,15 +62,14 @@ public class ReceiveRecord extends HttpServlet {
             servletFileUpload.setHeaderEncoding("UTF-8");
 
 
-            List<FileItem> list = (List<FileItem>) servletFileUpload.parseRequest(new ServletRequestContext(request));
+            List<FileItem> list = servletFileUpload.parseRequest(new ServletRequestContext(request));
             for (FileItem item : list) {
-                //获取表单属性名字
                 String name = item.getFieldName();
                 InputStream is = item.getInputStream();
 
-                if (item.isFormField()) {//判断某项是否是普通的表单类型
+                if (name.contains("content")) {
                     System.out.println(inputStream2String(is));
-                } else{
+                } else if (name.contains("file")) {
                     try {
                         inputStream2File(is, upload + "\\" + item.getName());
                     } catch (Exception e) {

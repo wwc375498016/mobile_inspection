@@ -2,7 +2,7 @@ package Entity;
 
 public class UserEntity {
     //用户ID
-    private int userID;
+    private String UserID;
 
     //用户姓名
     private String userName;
@@ -10,8 +10,8 @@ public class UserEntity {
     //用户密码
     private String password;
 
-    //用户身份证
-    private String id;
+    //用户地址
+    private String address;
 
     //用户电话
     private String tell;
@@ -19,24 +19,21 @@ public class UserEntity {
     //用户性别0为女1为男
     private String gender;
 
-    //用户工号
-    private String workNumber;
-
-    //用户年龄
-    private String age;
-
-    public int getuserID() {
-        return userID;
-    }
-    public void setuserID(int userID) {
-        this.userID = userID;
+    //
+    private String birthday;
+    public String getUserID() {
+        return UserID;
     }
 
-    public String getid() {
-        return id;
+    public void setUserID(String UserID) {
+        this.UserID = UserID;
     }
-    public void setid(String id) {
-        this.id = id;
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
 
@@ -61,41 +58,35 @@ public class UserEntity {
     public String getGender() {
         return gender;
     }
-    public void setGender(String gender) {
+
+    public void setSex(String gender) {
         this.gender = gender;
     }
-
-    public String getworkNumber() {
-        return workNumber;
+    public String getAddress() {
+        return address;
     }
-    public void setworkNumber(String workNumber) {
-        this.workNumber = workNumber;
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getTell() {
         return tell;
     }
+
     public void setTell(String tell) {
         this.tell = tell;
     }
-
-    public String getAge() {
-        return age;
-    }
-    public void setAge(String age) {
-        this.age = age;
-    }
-
     public UserEntity(){}
-    public UserEntity(int userID, String userName, String password, String gender, String id, String tell, String workNumber, String age) {
-        this.userID = userID;
+    public UserEntity(String UserID, String userName, String password, String gender, String address, String tell, String birthday) {
+        this.UserID = UserID;
         this.userName = userName;
         this.password = password;
-        this.id = id;
+        this.address = address;
         this.tell = tell;
         this.gender = gender;
-        this.workNumber = workNumber;
-        this.age = age;
+        this.birthday = birthday;
+        // this.age = age;
     }
 
 }

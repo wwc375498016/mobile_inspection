@@ -31,28 +31,23 @@ public class Login extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             //获得请求中传来的用户名和密码
-            String tell = request.getParameter("AccountNumber").trim();
+            String userID = request.getParameter("AccountNumber").trim();
             String password = request.getParameter("Password").trim();
 
             //密码验证结果
-            Boolean verifyResult = verifyLogin(tell, password);
+            Boolean verifyResult = verifyLogin(userID, password);
 
             Map<String, String> params = new HashMap<>();
             JSONObject jsonObject = new JSONObject();
 
-            if(!UserDAO.ifexistUser(tell)){
-                params.put("Result", "用户名不存在");
-                jsonObject.put("params", params);
-                out.write(jsonObject.toString());
-            }else{
-                if (verifyResult) {
-                    params.put("Result", "success");
-                } else {
-                    params.put("Result", "密码错误");
-                }
-                jsonObject.put("params", params);
-                out.write(jsonObject.toString());
+            if (verifyResult) {
+                params.put("Result", "success");
+            } else {
+                params.put("Result", "failed");
             }
+
+            jsonObject.put("params", params);
+            out.write(jsonObject.toString());
         }
     }
 
@@ -67,8 +62,8 @@ public class Login extends HttpServlet {
      *
      * @param password
      */
-    private Boolean verifyLogin(String tell, String password) {
-        UserEntity user = UserDAO.queryUser(tell, password);
+    private Boolean verifyLogin(String userID, String password) {
+        UserEntity user = UserDAO.queryUser(userID, password);
 
         //账户密码验证
         return null != user && password.equals(user.getPassword());

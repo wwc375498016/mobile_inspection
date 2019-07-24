@@ -2,159 +2,49 @@
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
-<web-app>
-  <servlet>
-    <servlet-name>DBManager</servlet-name>
-    <!-- 下面这行是DBManager这个类的定位，“包名”替换为你在前面第4步中创建的包名，区分大小写！！！ -->
-    <servlet-class>DBManager.DBManager</servlet-class>
-    <init-param>
-      <param-name>DBUsername</param-name>
-      <!-- 这里是数据库用户名，一般情况下是root，无需改变 -->
-      <param-value>root</param-value>
-    </init-param>
-    <init-param>
-      <param-name>DBPassword</param-name>
-      <!-- 下面这两个标签中间写你的数据库密码，如果没设置就什么也别写，空格也不能有 -->
-      <param-value></param-value>
-    </init-param>
-    <init-param>
-      <param-name>ConnectionURL</param-name>
-      <!-- myfirstapp是《MySQL》博文中强调的数据库的名字 -->
-      <param-value>jdbc:mysql://localhost:3306/mobile_inspection?useUnicode=true&amp;characterEncoding=UTF-8</param-value>
-    </init-param>
-    <!-- 下面这行很重要，指示服务器在启动时立即加载这个Servlet -->
-    <load-on-startup>0</load-on-startup>
-  </servlet>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>DBManager</servlet-name>
+        <!-- 下面这行是DBManager这个类的定位，“包名”替换为你在前面第4步中创建的包名，区分大小写！！！ -->
+        <servlet-class>DBManager.DBManager</servlet-class>
+        <init-param>
+            <param-name>DBUsername</param-name>
+            <!-- 这里是数据库用户名，一般情况下是root，无需改变 -->
+            <param-value>root</param-value>
+        </init-param>
+        <init-param>
+            <param-name>DBPassword</param-name>
+            <!-- 下面这两个标签中间写你的数据库密码，如果没设置就什么也别写，空格也不能有 -->
+            <param-value>z001210123</param-value>
+        </init-param>
+        <init-param>
+            <param-name>ConnectionURL</param-name>
+            <!-- myfirstapp是《MySQL》博文中强调的数据库的名字 -->
+            <param-value>jdbc:mysql://localhost:3306/mobile_inspection</param-value>
+        </init-param>
+        <!-- 下面这行很重要，指示服务器在启动时立即加载这个Servlet -->
+        <load-on-startup>0</load-on-startup>
+    </servlet><servlet-mapping>
+        <servlet-name>DBManager</servlet-name>
+        <url-pattern>/DBManager</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>servlet.Login</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    
 
-  <servlet>
-    <servlet-name>Login</servlet-name>
-    <servlet-class>servlet.Login</servlet-class>
-  </servlet>
-
-  <servlet>
-    <servlet-name>Project</servlet-name>
-    <servlet-class>servlet.Project</servlet-class>
-  </servlet>
-
-  <servlet>
-    <servlet-name>Register</servlet-name>
-    <servlet-class>servlet.Register</servlet-class>
-  </servlet>
-
-  <servlet>
-    <servlet-name>ProjectDetail</servlet-name>
-    <servlet-class>servlet.ProjectDetail</servlet-class>
-  </servlet>
-
-  <servlet>
-    <servlet-name>ResetPassword</servlet-name>
-    <servlet-class>servlet.ResetPassword</servlet-class>
-  </servlet>
-
-  <servlet>
-    <servlet-name>SendSmsServlet</servlet-name>
-    <servlet-class>servlet.SendSmsServlet</servlet-class>
-  </servlet>
-
-  <servlet>
-    <servlet-name>LoginByVCode</servlet-name>
-    <servlet-class>servlet.LoginByVCode</servlet-class>
-  </servlet>
-
-  <servlet>
-    <servlet-name>Users</servlet-name>
-    <servlet-class>servlet.Users</servlet-class>
-  </servlet>
-
-  <servlet>
-    <servlet-name>Search</servlet-name>
-    <servlet-class>servlet.Search</servlet-class>
-  </servlet>
-
-  <servlet>
-    <servlet-name>ProjectPage</servlet-name>
-    <servlet-class>servlet.ProjectPage</servlet-class>
-  </servlet>
-
-  <servlet>
-    <servlet-name>UserDetail</servlet-name>
-    <servlet-class>servlet.UserDetail</servlet-class>
-  </servlet>
-
-  <servlet>
-    <servlet-name>ReceiveRecord</servlet-name>
-    <servlet-class>servlet.ReceiveRecord</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>DBManager</servlet-name>
-    <url-pattern>/DBManager</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>Login</servlet-name>
-    <url-pattern>/Login</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>Project</servlet-name>
-    <url-pattern>/Project</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>Register</servlet-name>
-    <url-pattern>/Register</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>ProjectDetail</servlet-name>
-    <url-pattern>/ProjectDetail</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>ResetPassword</servlet-name>
-    <url-pattern>/ResetPassword</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>SendSmsServlet</servlet-name>
-    <url-pattern>/SendSmsServlet</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>LoginByVCode</servlet-name>
-    <url-pattern>/LoginByVCode</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>Users</servlet-name>
-    <url-pattern>/Users</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>Search</servlet-name>
-    <url-pattern>/Search</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>ProjectPage</servlet-name>
-    <url-pattern>/ProjectPage</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>UserDetail</servlet-name>
-    <url-pattern>/UserDetail</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>ReceiveRecord</servlet-name>
-    <url-pattern>/ReceiveRecord</url-pattern>
-  </servlet-mapping>
-
-  <session-config>
-    <session-timeout>
-      30
-    </session-timeout>
-  </session-config>
-
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>uploadImage.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>
