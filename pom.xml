@@ -32,11 +32,6 @@
     </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>commons-codec</groupId>
-      <artifactId>commons-codec</artifactId>
-      <version>1.11</version>
-    </dependency>
     <!-- End: json相关依赖包 -->
     <dependency>
       <groupId>net.sf.json-lib</groupId>
@@ -148,10 +143,24 @@
     </dependency>
     <!-- End: Servlet相关依赖包 -->
 
+    <!-- Start: 榛子云相关依赖包 -->
+    <dependency>
+      <groupId>com.zhenzikj</groupId>
+      <artifactId>zhenzisms</artifactId>
+      <version>1.0.2</version>
+    </dependency>
+    <!-- End: 榛子云相关依赖包 -->
+
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.6</version>
+    </dependency>
+
   </dependencies>
 
   <build>
-    <finalName>ssm-demo</finalName>
+    <finalName>mobile_inspection_war</finalName>
     <plugins>
 
       <plugin>
