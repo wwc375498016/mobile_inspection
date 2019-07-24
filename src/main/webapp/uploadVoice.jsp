@@ -6,14 +6,14 @@
 </head>
 <body>
 <%
-    String imgEncodedStr = request.getParameter("voice");
+    String VoiceEncodedStr = request.getParameter("voice");
     String fileName = request.getParameter("filename");
     System.out.println("Filename: "+ fileName);
-    if(imgEncodedStr != null){
-        UploadVoice.convertStringtoImage(imgEncodedStr, fileName);
-        out.print("Image upload complete, Please check your directory");
+    if(VoiceEncodedStr != null){
+        UploadVoice.convertStringtoImage(VoiceEncodedStr, fileName);
+        out.print("Voice upload complete, Please check your directory");
     } else{
-        out.print("Image is empty");
+        out.print("Voice is empty");
     }
 %>
 </body>
