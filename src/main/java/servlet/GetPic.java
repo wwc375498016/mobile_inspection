@@ -1,6 +1,5 @@
 package servlet;
 
-import dao.UserDAO;
 import net.sf.json.JSONObject;
 import org.apache.commons.codec.binary.Base64;
 

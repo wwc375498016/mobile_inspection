@@ -1,5 +1,8 @@
 package Entity;
 
+/**
+ * 用户实体类
+ */
 public class UserEntity {
     //用户ID
     private int userID;

@@ -2,6 +2,9 @@ package Entity;
 
 import java.util.Date;
 
+/**
+ * 项目实体类
+ */
 public class ProjectEntity {
     //项目ID
     private String ProjectID;

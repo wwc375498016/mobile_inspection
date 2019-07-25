@@ -14,8 +14,8 @@
     </init-param>
     <init-param>
       <param-name>DBPassword</param-name>
-      <!-- 下面这两个标签中间写你的数据库密码，如果没设置就什么也别写，空格也不能有 -->
-      <param-value>z001210123</param-value>
+      <!-- 下面这两个标签中间写你的数据库密码，如果没设置就什么也别写，空格也不能有 z001210123-->
+      <param-value></param-value>
     </init-param>
     <init-param>
       <param-name>ConnectionURL</param-name>

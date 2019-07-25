@@ -3,6 +3,9 @@ package Entity;
 import java.sql.Timestamp;
 import java.util.Date;
 
+/**
+ * 验证码token实体类
+ */
 public class RegisterTokenEntity {
     //tokenID
     private int RegisterTokenID;
