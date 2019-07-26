@@ -7,10 +7,14 @@
 <body>
 <%
     String VoiceEncodedStr = request.getParameter("voice");
-    String fileName = request.getParameter("filename");
-    System.out.println("Filename: "+ fileName);
+    String projectName = request.getParameter("projectName");
+    String date = request.getParameter("date");
+    String time = request.getParameter("time");
+    String address = request.getParameter("address");
+
+    out.println("Filename: "+ projectName+" "+address+" "+date+" "+time);
     if(VoiceEncodedStr != null){
-        UploadVoice.convertStringtoImage(VoiceEncodedStr, fileName);
+        UploadVoice.convertStringtoImage(VoiceEncodedStr, projectName,date,time,address);
         out.print("Voice upload complete, Please check your directory");
     } else{
         out.print("Voice is empty");

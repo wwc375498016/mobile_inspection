@@ -18,7 +18,7 @@
     String signatureName = request.getParameter("signatureName");
     String date = request.getParameter("date");
 
-    System.out.println("Filename: "+ signatureName);
+    out.print("Filename: "+ signatureName);
     if(signatureEncodedStr != null){
         UploadSignature.convertStringtoImage(signatureEncodedStr, checkName, signatureName, date);
         out.print("Signature upload complete, Please check your directory");

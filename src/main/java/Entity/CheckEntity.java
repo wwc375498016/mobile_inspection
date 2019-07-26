@@ -1,8 +1,7 @@
 package Entity;
 
-import java.sql.Time;
+import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.Date;
 
 /**
  * 检查记录实体类
@@ -18,7 +17,7 @@ public class CheckEntity {
     private String CheckType;
 
     //检查时间
-    private Timestamp CheckTime;
+    private Date CheckTime;
 
     //检查人1
     private String Rummager1;
@@ -50,8 +49,8 @@ public class CheckEntity {
     public String getCheckType(){return CheckType;}
     public void setCheckType(String CheckType){this.CheckType = CheckType;}
 
-    public Timestamp getCheckTime(){return CheckTime;}
-    public void setCheckTime(Timestamp CheckTime){this.CheckTime = CheckTime;}
+    public Date getCheckTime(){return CheckTime;}
+    public void setCheckTime(Date CheckTime){this.CheckTime = CheckTime;}
 
     public String getRummager1(){return Rummager1;}
     public void setRummager1(String Rummager1){this.Rummager1 = Rummager1;}
@@ -75,7 +74,7 @@ public class CheckEntity {
     public void setSignaturePath(String SignaturePath){this.SignaturePath = SignaturePath;}
 
     public CheckEntity(){}
-    public CheckEntity(int CheckID, String CheckProject, String CheckType, Timestamp CheckTime, String Rummager1, String Rummager2, String Rummager3, String TheInspected, String SituationPath, String MeasuresAndRequirementsPath, String SignaturePath) {
+    public CheckEntity(int CheckID, String CheckProject, String CheckType, Date CheckTime, String Rummager1, String Rummager2, String Rummager3, String TheInspected, String SituationPath, String MeasuresAndRequirementsPath, String SignaturePath) {
         this.CheckID = CheckID;
         this.CheckProject = CheckProject;
         this.CheckType = CheckType;
