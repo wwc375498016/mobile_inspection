@@ -26,21 +26,32 @@ public class CheckStart extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         try (PrintWriter out = response.getWriter()) {
             //获得请求中传来的检查项目、检查时间、检查人
-            String CheckProject = request.getParameter("CheckProject").trim();
-            String Rummager1 = request.getParameter("Rummager1").trim();
+            String CheckProject = request.getParameter("checkProject").trim();
+            String CheckType = request.getParameter("checkType").trim();
+            String TheInspected = request.getParameter("theInspected").trim();
+            String Rummager1 = request.getParameter("rummager1").trim();
             String Rummager2 = null;
             String Rummager3 = null;
+            String Rummager4 = null;
+            String Rummager5 = null;
             Map<String, String> params = new HashMap<>();
             JSONObject jsonObject = new JSONObject();
-            if(request.getParameter("Rummager2")!=null){
-                Rummager2 = request.getParameter("Rummager2").trim();
+            if(request.getParameter("rummager2")!=null){
+                Rummager2 = request.getParameter("rummager2").trim();
             }
-            if(request.getParameter("Rummager3")!=null){
-                Rummager3 = request.getParameter("Rummager3").trim();
+            if(request.getParameter("rummager3")!=null){
+                Rummager3 = request.getParameter("rummager3").trim();
             }
+            if(request.getParameter("rummager4")!=null){
+                Rummager4 = request.getParameter("rummager4").trim();
+            }
+            if(request.getParameter("rummager5")!=null){
+                Rummager5 = request.getParameter("rummager5").trim();
+            }
+
             Date CheckTime = new Date(System.currentTimeMillis());
 
-            if (CheckDAO.insertCheck(CheckProject, CheckTime, Rummager1, Rummager2, Rummager3)) {
+            if (CheckDAO.insertCheck(CheckProject, CheckType, CheckTime, Rummager1, Rummager2, Rummager3, Rummager4, Rummager5, TheInspected)) {
                 params.put("Result", "success");
             } else {
                 params.put("Result", "failed");

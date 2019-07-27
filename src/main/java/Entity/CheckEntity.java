@@ -28,6 +28,12 @@ public class CheckEntity {
     //检查人3
     private String Rummager3;
 
+    //检查人4
+    private String Rummager4;
+
+    //检查人5
+    private String Rummager5;
+
     //被检查人
     private String TheInspected;
 
@@ -61,6 +67,12 @@ public class CheckEntity {
     public String getRummager3(){return Rummager3;}
     public void setRummager3(String Rummager3){this.Rummager3 = Rummager3;}
 
+    public String getRummager4(){return Rummager4;}
+    public void setRummager4(String Rummager4){this.Rummager4 = Rummager4;}
+
+    public String getRummager5(){return Rummager5;}
+    public void setRummager5(String Rummager5){this.Rummager5 = Rummager5;}
+
     public String getTheInspected(){return TheInspected;}
     public void setTheInspected(String TheInspected){this.TheInspected = TheInspected;}
 
@@ -74,7 +86,7 @@ public class CheckEntity {
     public void setSignaturePath(String SignaturePath){this.SignaturePath = SignaturePath;}
 
     public CheckEntity(){}
-    public CheckEntity(int CheckID, String CheckProject, String CheckType, Date CheckTime, String Rummager1, String Rummager2, String Rummager3, String TheInspected, String SituationPath, String MeasuresAndRequirementsPath, String SignaturePath) {
+    public CheckEntity(int CheckID, String CheckProject, String CheckType, Date CheckTime, String Rummager1, String Rummager2, String Rummager3, String Rummager4, String Rummager5, String TheInspected, String SituationPath, String MeasuresAndRequirementsPath, String SignaturePath) {
         this.CheckID = CheckID;
         this.CheckProject = CheckProject;
         this.CheckType = CheckType;
@@ -82,6 +94,8 @@ public class CheckEntity {
         this.Rummager1 = Rummager1;
         this.Rummager2 = Rummager2;
         this.Rummager3 = Rummager3;
+        this.Rummager4 = Rummager4;
+        this.Rummager5 = Rummager5;
         this.TheInspected = TheInspected;
         this.SituationPath = SituationPath;
         this.MeasuresAndRequirementsPath = MeasuresAndRequirementsPath;
