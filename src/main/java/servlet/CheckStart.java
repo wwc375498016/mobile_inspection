@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,8 +27,12 @@ public class CheckStart extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             //获得请求中传来的检查项目、检查时间、检查人
             String CheckProject = request.getParameter("checkProject").trim();
+            String Address = request.getParameter("address").trim();
             String CheckType = request.getParameter("checkType").trim();
+            String CheckTime = request.getParameter("checkTime").trim();
             String TheInspected = request.getParameter("theInspected").trim();
+            String Situation = request.getParameter("situation").trim();
+            String MAR = request.getParameter("mar").trim();
             String Rummager1 = request.getParameter("rummager1").trim();
             String Rummager2 = null;
             String Rummager3 = null;
@@ -49,9 +53,7 @@ public class CheckStart extends HttpServlet {
                 Rummager5 = request.getParameter("rummager5").trim();
             }
 
-            Date CheckTime = new Date(System.currentTimeMillis());
-
-            if (CheckDAO.insertCheck(CheckProject, CheckType, CheckTime, Rummager1, Rummager2, Rummager3, Rummager4, Rummager5, TheInspected)) {
+            if (CheckDAO.insertCheck(CheckProject, Address,CheckType, CheckTime, Rummager1, Rummager2, Rummager3, Rummager4, Rummager5, TheInspected,Situation,MAR)) {
                 params.put("Result", "success");
             } else {
                 params.put("Result", "failed");

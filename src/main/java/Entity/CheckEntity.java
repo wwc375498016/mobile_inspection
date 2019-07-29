@@ -1,6 +1,7 @@
 package Entity;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.sql.Timestamp;
 
 /**
@@ -13,11 +14,14 @@ public class CheckEntity {
     //检查项目名称
     private String CheckProject;
 
+    //检查项目地址
+    private String Address;
+
     //检查类型
     private String CheckType;
 
     //检查时间
-    private Date CheckTime;
+    private String CheckTime;
 
     //检查人1
     private String Rummager1;
@@ -38,10 +42,10 @@ public class CheckEntity {
     private String TheInspected;
 
     //基本情况文本路径
-    private String SituationPath;
+    private String Situation;
 
     //执法措施及要求路径
-    private String MeasuresAndRequirementsPath;
+    private String MeasuresAndRequirements;
 
     //签名文件路径
     private String SignaturePath;
@@ -52,11 +56,14 @@ public class CheckEntity {
     public String getCheckProject(){return CheckProject;}
     public void setCheckProject(String CheckProject){this.CheckProject = CheckProject;}
 
+    public String getAddress(){return Address;}
+    public void setAddress(String Address){this.Address = Address;}
+
     public String getCheckType(){return CheckType;}
     public void setCheckType(String CheckType){this.CheckType = CheckType;}
 
-    public Date getCheckTime(){return CheckTime;}
-    public void setCheckTime(Date CheckTime){this.CheckTime = CheckTime;}
+    public String getCheckTime(){return CheckTime;}
+    public void setCheckTime(String CheckTime){this.CheckTime = CheckTime;}
 
     public String getRummager1(){return Rummager1;}
     public void setRummager1(String Rummager1){this.Rummager1 = Rummager1;}
@@ -76,19 +83,20 @@ public class CheckEntity {
     public String getTheInspected(){return TheInspected;}
     public void setTheInspected(String TheInspected){this.TheInspected = TheInspected;}
 
-    public String getSituationPath(){return SituationPath;}
-    public void setSituationPath(String SituationPath){this.SituationPath = SituationPath;}
+    public String getSituation(){return Situation;}
+    public void setSituation(String Situation){this.Situation = Situation;}
 
-    public String getMeasuresAndRequirementsPath(){return MeasuresAndRequirementsPath;}
-    public void setMeasuresAndRequirementsPath(String MeasuresAndRequirementsPath){this.MeasuresAndRequirementsPath = MeasuresAndRequirementsPath;}
+    public String getMeasuresAndRequirements(){return MeasuresAndRequirements;}
+    public void setMeasuresAndRequirements(String MeasuresAndRequirements){this.MeasuresAndRequirements = MeasuresAndRequirements;}
 
     public String getSignaturePath(){return SignaturePath;}
     public void setSignaturePath(String SignaturePath){this.SignaturePath = SignaturePath;}
 
     public CheckEntity(){}
-    public CheckEntity(int CheckID, String CheckProject, String CheckType, Date CheckTime, String Rummager1, String Rummager2, String Rummager3, String Rummager4, String Rummager5, String TheInspected, String SituationPath, String MeasuresAndRequirementsPath, String SignaturePath) {
+    public CheckEntity(int CheckID, String CheckProject, String Address,String CheckType, String CheckTime, String Rummager1, String Rummager2, String Rummager3, String Rummager4, String Rummager5, String TheInspected, String Situation, String MeasuresAndRequirements, String SignaturePath) {
         this.CheckID = CheckID;
         this.CheckProject = CheckProject;
+        this.Address = Address;
         this.CheckType = CheckType;
         this.CheckTime = CheckTime;
         this.Rummager1 = Rummager1;
@@ -97,8 +105,8 @@ public class CheckEntity {
         this.Rummager4 = Rummager4;
         this.Rummager5 = Rummager5;
         this.TheInspected = TheInspected;
-        this.SituationPath = SituationPath;
-        this.MeasuresAndRequirementsPath = MeasuresAndRequirementsPath;
+        this.Situation = Situation;
+        this.MeasuresAndRequirements = MeasuresAndRequirements;
         this.SignaturePath = SignaturePath;
     }
 }

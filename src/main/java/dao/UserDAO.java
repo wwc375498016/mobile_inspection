@@ -294,4 +294,35 @@ public class UserDAO {
         }
     }
 
+    /**
+     * 将头像路径插入到数据库
+     */
+    public static boolean insertAvatarPath(String tell, String path) {
+
+        //获得数据库的连接对象
+        Connection connection = DBManager.getConnection();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        //生成SQL代码
+        StringBuilder sqlStatement = new StringBuilder();
+
+        sqlStatement.append("UPDATE users SET Avatar=? WHERE Tell=?");
+
+        //设置数据库的字段值，UserID为自增不需要插入值
+        try {
+            preparedStatement = connection.prepareStatement(sqlStatement.toString());
+            preparedStatement.setString(1, path);
+            preparedStatement.setString(2, tell);
+            if(preparedStatement.executeUpdate()!=0){
+                return true;
+            }else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        } finally {
+            DBManager.closeAll(connection, preparedStatement, resultSet);
+        }
+    }
 }

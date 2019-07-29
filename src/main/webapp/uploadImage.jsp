@@ -8,7 +8,7 @@
 <%
     String imgEncodedStr = request.getParameter("image");
     String fileName = request.getParameter("filename");
-    out.print("Filename: "+ fileName);
+    out.println("Filename: "+ fileName);
     if(imgEncodedStr != null){
         UploadImage.convertStringtoImage(imgEncodedStr, fileName);
         out.print("Image upload complete, Please check your directory");
