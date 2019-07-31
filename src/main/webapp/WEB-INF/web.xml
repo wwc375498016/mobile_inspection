@@ -72,11 +72,6 @@
   </servlet>
 
   <servlet>
-    <servlet-name>ProjectPage</servlet-name>
-    <servlet-class>servlet.ProjectPage</servlet-class>
-  </servlet>
-
-  <servlet>
     <servlet-name>UserDetail</servlet-name>
     <servlet-class>servlet.UserDetail</servlet-class>
   </servlet>
@@ -99,6 +94,26 @@
   <servlet>
     <servlet-name>CheckPhotoDelete</servlet-name>
     <servlet-class>servlet.CheckPhotoDelete</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>NoteUpload</servlet-name>
+    <servlet-class>servlet.NoteUpload</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>Review</servlet-name>
+    <servlet-class>servlet.Review</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>CheckJudge</servlet-name>
+    <servlet-class>servlet.CheckJudge</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>NoteDownload</servlet-name>
+    <servlet-class>servlet.NoteDownload</servlet-class>
   </servlet>
 
   <servlet-mapping>
@@ -152,11 +167,6 @@
   </servlet-mapping>
 
   <servlet-mapping>
-    <servlet-name>ProjectPage</servlet-name>
-    <url-pattern>/ProjectPage</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
     <servlet-name>UserDetail</servlet-name>
     <url-pattern>/UserDetail</url-pattern>
   </servlet-mapping>
@@ -179,6 +189,26 @@
   <servlet-mapping>
     <servlet-name>CheckPhotoDelete</servlet-name>
     <url-pattern>/CheckPhotoDelete</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>NoteUpload</servlet-name>
+    <url-pattern>/NoteUpload</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Review</servlet-name>
+    <url-pattern>/Review</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>CheckJudge</servlet-name>
+    <url-pattern>/CheckJudge</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>NoteDownload</servlet-name>
+    <url-pattern>/NoteDownload</url-pattern>
   </servlet-mapping>
 
   <session-config>

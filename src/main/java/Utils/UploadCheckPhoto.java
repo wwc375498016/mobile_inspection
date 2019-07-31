@@ -1,5 +1,6 @@
 package Utils;
 
+import dao.CheckDAO;
 import org.apache.commons.codec.binary.Base64;
 
 import java.io.File;
@@ -16,6 +17,9 @@ public class UploadCheckPhoto {
     public static void convertStringtoImage(String encodedImageStr, String projectName,String date, String address,String photoName) {
 
         try {
+            //审阅完成，该检查完成，修改标志位
+            CheckDAO.checkComplete(projectName,address,date);
+
             byte[] imageByteArray = Base64.decodeBase64(encodedImageStr);
             File file = new File("C:/xampp/tomcat/webapps/checkphoto/" + projectName+" "+address);
             if(!file.exists()){//如果文件夹不存在

@@ -34,7 +34,7 @@ public class SendSmsServlet extends HttpServlet {
             //该部分实现发送验证码功能
             String verifyCode = String.valueOf(new Random().nextInt(9000)+1000);//生成四位随机数，范围1000~9999
             ZhenziSmsClient client = new ZhenziSmsClient("https://sms_developer.zhenzikj.com","101132", "7ea66fd9-e245-4480-a9da-c33432c5b648");
-            String result = client.send(tell, "您的验证码为:" + verifyCode + "，该码有效期为1分钟，该码只能使用一次!");
+            String result = client.send(tell, "您的验证码为:" + verifyCode + "，请在5分钟内完成验证，请勿将验证码泄露给他人。\n");
             /*
             返回的result是一个json格式的字符串，如：
             {"code":0,"data":"发送成功"}

@@ -38,36 +38,28 @@ public class Register extends HttpServlet {
             Map<String, String> params = new HashMap<>();
             JSONObject jsonObject = new JSONObject();
             if(UserDAO.ifexistUser(tell)) {
-                params.put("Result", "Registered!");
-                jsonObject.put("params", params);
-                out.write(jsonObject.toString());
-            }else {
-                //验证码检验模块
-                RegisterTokenEntity registerTokenEntity = RegisterTokenDAO.queryRegisterToken(tell);
-                //获取当前系统时间戳
-                Date date = new Date();
-                Timestamp timestamp = new Timestamp(date.getTime());
+                if(!UserDAO.ifPasswordExist(tell)){
+                    //验证码检验模块
+                    RegisterTokenEntity registerTokenEntity = RegisterTokenDAO.queryRegisterToken(tell);
+                    //获取当前系统时间戳
+                    Date date = new Date();
+                    Timestamp timestamp = new Timestamp(date.getTime());
 
-                if (registerTokenEntity == null) {
-                    params.put("Result", "手机号错误");
-                    jsonObject.put("params", params);
-                    out.write(jsonObject.toString());
-                } else if (!registerTokenEntity.getVCode().equals(verifyCode)) {
-                    params.put("Result", "验证码错误");
-                    jsonObject.put("params", params);
-                    out.write(jsonObject.toString());
-                } else if ((timestamp.getTime() - registerTokenEntity.getTime().getTime()) > 1000 * 60) {//验证码设定的时间为1分钟过期
+                    if (registerTokenEntity == null) {
+                        params.put("Result", "手机号错误");
+                        jsonObject.put("params", params);
+                        out.write(jsonObject.toString());
+                    } else if (!registerTokenEntity.getVCode().equals(verifyCode)) {
+                        params.put("Result", "验证码错误");
+                        jsonObject.put("params", params);
+                        out.write(jsonObject.toString());
+                    } else if ((timestamp.getTime() - registerTokenEntity.getTime().getTime()) > 1000 * 60 * 5) {//验证码设定的时间为1分钟过期
                         params.put("Result", "验证码已过期");
                         jsonObject.put("params", params);
                         out.write(jsonObject.toString());
                     } else {
-                        String userName = request.getParameter("userName").trim();
                         String password = request.getParameter("Password").trim();
-                        String id = request.getParameter("id").trim();
-                        String gender = request.getParameter("gender").trim();
-                        String workNumber = request.getParameter("workNumber").trim();
-                        String age = request.getParameter("age").trim();
-                        if (UserDAO.registerUser(userName, password, gender, id, tell, workNumber, age)) {
+                        if (UserDAO.registerUser(password,tell)) {
                             params.put("Result", "success");
                             RegisterTokenDAO.ChangeUsed(tell);
                         } else {
@@ -76,6 +68,15 @@ public class Register extends HttpServlet {
                         jsonObject.put("params", params);
                         out.write(jsonObject.toString());
                     }
+                }else {
+                    params.put("Result", "registered!");
+                    jsonObject.put("params", params);
+                    out.write(jsonObject.toString());
+                }
+            }else {
+                params.put("Result", "phone does not exist!");
+                jsonObject.put("params", params);
+                out.write(jsonObject.toString());
             }
         }
     }

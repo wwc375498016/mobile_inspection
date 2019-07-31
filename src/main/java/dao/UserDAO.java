@@ -131,7 +131,7 @@ public class UserDAO {
     /**
      用户注册，向数据库中加入用户信息
      */
-    public static boolean registerUser(String userName, String password, String gender, String id, String tell, String workNumber,String age) {
+    public static boolean registerUser(String password,String tell) {
 
         //获得数据库的连接对象
         Connection connection = DBManager.getConnection();
@@ -140,18 +140,13 @@ public class UserDAO {
         //生成SQL代码
         StringBuilder sqlStatement = new StringBuilder();
 
-        sqlStatement.append("INSERT INTO users(UserName,Password,ID,Tell,Gender,WorkNumber,Age) VALUES(?,?,?,?,?,?,?)");
+        sqlStatement.append("UPDATE users SET Password=? WHERE Tell=?");
 
         //设置数据库的字段值，UserID为自增不需要插入值
         try {
             preparedStatement = connection.prepareStatement(sqlStatement.toString());
-            preparedStatement.setString(1, userName);
-            preparedStatement.setString(2, password);
-            preparedStatement.setString(3, id);
-            preparedStatement.setString(4, tell);
-            preparedStatement.setString(5, gender);
-            preparedStatement.setString(6, workNumber);
-            preparedStatement.setString(7,age);
+            preparedStatement.setString(1, password);
+            preparedStatement.setString(2, tell);
             if(preparedStatement.executeUpdate()!=0){
                 return true;
             }else {
@@ -320,6 +315,38 @@ public class UserDAO {
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        } finally {
+            DBManager.closeAll(connection, preparedStatement, resultSet);
+        }
+    }
+
+    /**
+     * 判断用户密码是否存在，通过密码存在与否判断是否已注册
+     */
+    public static boolean ifPasswordExist(String tell) {
+        //获得数据库的连接对象
+        Connection connection = DBManager.getConnection();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        //生成SQL代码
+        StringBuilder sqlStatement = new StringBuilder();
+        sqlStatement.append("SELECT Password FROM users WHERE Tell=?");
+
+        //查询数据库的字段值
+        try {
+            preparedStatement = connection.prepareStatement(sqlStatement.toString());
+            preparedStatement.setString(1, tell);
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                if(resultSet.getString("Password")!=null){
+                    return true;
+                }
+            }
+            return false;
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
             return false;
         } finally {
             DBManager.closeAll(connection, preparedStatement, resultSet);

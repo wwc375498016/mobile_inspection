@@ -41,10 +41,10 @@ public class CheckEntity {
     //被检查人
     private String TheInspected;
 
-    //基本情况文本路径
+    //基本情况文本
     private String Situation;
 
-    //执法措施及要求路径
+    //执法措施及要求
     private String MeasuresAndRequirements;
 
     //签名文件路径

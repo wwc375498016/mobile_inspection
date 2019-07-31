@@ -10,15 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 发起检查，新建检查记录
+ * 发起检查前判断是否有相同未完成检查
  */
-@WebServlet(name = "CheckStart")
-public class CheckStart extends HttpServlet {
+@WebServlet(name = "CheckJudge")
+public class CheckJudge extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //设置响应内容类型
         response.setContentType("text/html;charset=utf-8");
@@ -31,32 +30,21 @@ public class CheckStart extends HttpServlet {
             String CheckProject = request.getParameter("checkProject").trim();
             String Address = request.getParameter("address").trim();
             String CheckTime = request.getParameter("checkTime").trim();
-
-            String Rummager1 = request.getParameter("rummager1").trim();
-            String Rummager2 = null;
-            String Rummager3 = null;
-            String Rummager4 = null;
-            String Rummager5 = null;
-            if(request.getParameter("rummager2")!=null){
-                Rummager2 = request.getParameter("rummager2").trim();
+            //判断检查是否完成
+            if(CheckDAO.ifCompleted(CheckProject,Address,CheckTime)==1 || CheckDAO.ifCompleted(CheckProject,Address,CheckTime)==2){
+                //这包含了同一天对同一项目发起多次检查和完全新的检查，这是因为现在的日期记录只精确到年月日不能区分同一天对同一项目的两个检查
+                params.put("Result", "ok");
+                jsonObject.put("params", params);
+                out.write(jsonObject.toString());
+            }else if(CheckDAO.ifCompleted(CheckProject,Address,CheckTime)==0){
+                params.put("Result", "check incompleted");
+                jsonObject.put("params", params);
+                out.write(jsonObject.toString());
+            }else{
+                params.put("Result", "error");
+                jsonObject.put("params", params);
+                out.write(jsonObject.toString());
             }
-            if(request.getParameter("rummager3")!=null){
-                Rummager3 = request.getParameter("rummager3").trim();
-            }
-            if(request.getParameter("rummager4")!=null){
-                Rummager4 = request.getParameter("rummager4").trim();
-            }
-            if(request.getParameter("rummager5")!=null){
-                Rummager5 = request.getParameter("rummager5").trim();
-            }
-
-            if (CheckDAO.startCheck(CheckProject, Address,CheckTime, Rummager1, Rummager2, Rummager3, Rummager4, Rummager5)) {
-                params.put("Result", "success");
-            } else {
-                params.put("Result", "failed");
-            }
-            jsonObject.put("params", params);
-            out.write(jsonObject.toString());
         }
     }
 

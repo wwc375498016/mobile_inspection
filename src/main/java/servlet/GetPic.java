@@ -15,6 +15,9 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 将图片以base64码的方式返回给客户端
+ */
 @WebServlet(name = "GetPic")
 public class GetPic extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
