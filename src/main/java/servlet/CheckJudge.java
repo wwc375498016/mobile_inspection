@@ -30,13 +30,14 @@ public class CheckJudge extends HttpServlet {
             String CheckProject = request.getParameter("checkProject").trim();
             String Address = request.getParameter("address").trim();
             String CheckTime = request.getParameter("checkTime").trim();
+            String Rummager = request.getParameter("rummager").trim();
             //判断检查是否完成
-            if(CheckDAO.ifCompleted(CheckProject,Address,CheckTime)==1 || CheckDAO.ifCompleted(CheckProject,Address,CheckTime)==2){
+            if(CheckDAO.ifCompleted(CheckProject,Address,CheckTime,Rummager)==1 || CheckDAO.ifCompleted(CheckProject,Address,CheckTime,Rummager)==2 || CheckDAO.ifCompleted(CheckProject,Address,CheckTime,Rummager)==4){
                 //这包含了同一天对同一项目发起多次检查和完全新的检查，这是因为现在的日期记录只精确到年月日不能区分同一天对同一项目的两个检查
                 params.put("Result", "ok");
                 jsonObject.put("params", params);
                 out.write(jsonObject.toString());
-            }else if(CheckDAO.ifCompleted(CheckProject,Address,CheckTime)==0){
+            }else if(CheckDAO.ifCompleted(CheckProject,Address,CheckTime,Rummager)==0){
                 params.put("Result", "check incompleted");
                 jsonObject.put("params", params);
                 out.write(jsonObject.toString());

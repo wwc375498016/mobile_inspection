@@ -132,14 +132,14 @@ public class CheckDAO {
      * 查询标志位信息，判断记录是否已完成审阅
      * @return
      */
-    public static int ifCompleted(String CheckProject, String Address,String CheckTime) {
+    public static int ifCompleted(String CheckProject, String Address,String CheckTime,String Rummager) {
         //获得数据库的连接对象
         Connection connection = DBManager.getConnection();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         //生成SQL代码
         StringBuilder sqlStatement = new StringBuilder();
-        sqlStatement.append("SELECT IfCompleted FROM checkrecord WHERE CheckProject=? AND Address=? AND CheckTime=?");
+        sqlStatement.append("SELECT Rummager1,Rummager2,Rummager3,Rummager4,Rummager5,IfCompleted FROM checkrecord WHERE CheckProject=? AND Address=? AND CheckTime=?");
 
         //查询数据库的字段值
         try {
@@ -149,9 +149,28 @@ public class CheckDAO {
             preparedStatement.setString(3, CheckTime);
             resultSet = preparedStatement.executeQuery();
 
+            int judge = 0;
+
             while(resultSet.next()) {
                 if(resultSet.getString("IfCompleted").equals("0")){
-                    return 0;//未完成
+                    if(resultSet.getString("Rummager1").equals(Rummager)){
+                        judge=1;
+                    }else if(resultSet.getString("Rummager2")!=null && resultSet.getString("Rummager2").equals(Rummager)){
+                        judge=1;
+                    }else if(resultSet.getString("Rummager3")!=null && resultSet.getString("Rummager3").equals(Rummager)){
+                        judge=1;
+                    }else if(resultSet.getString("Rummager4")!=null && resultSet.getString("Rummager4").equals(Rummager)){
+                        judge=1;
+                    }else if(resultSet.getString("Rummager5")!=null && resultSet.getString("Rummager5").equals(Rummager)){
+                        judge=1;
+                    }
+
+                    if (judge == 1) {
+                        return 0;
+                    }else {
+                        return 4;
+                    }
+
                 }else {
                     return 1;//已完成
                 }
